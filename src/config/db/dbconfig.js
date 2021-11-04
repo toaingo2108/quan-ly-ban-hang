@@ -4,6 +4,7 @@ const config = {
     user: 'root',
     password: 'root',
     database: 'QLBH',
+    port: 1433,
     trustServerCertificate: true,
 }
 
