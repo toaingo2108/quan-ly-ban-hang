@@ -1,13 +1,16 @@
+require('dotenv').config();
+
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
+const cors = require('cors');
 const methodOverride = require('method-override');
 const handlebars = require('express-handlebars');
 
 const route = require('./routes/index');
 
 const app = express();
-// const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -19,6 +22,8 @@ app.use(
 app.use(express.json());
 
 app.use(methodOverride('_method'));
+
+app.use(cors());
 
 // HTTP logger
 app.use(morgan('combined'))
@@ -39,10 +44,6 @@ app.set('views', path.join(__dirname, 'resources', 'views'));
 // Routes init
 route(app);
 
-// app.listen(port, () => {
-//     console.log(`App listening at http://localhost:${port}`);
-// });
-
-app.listen(process.env.PORT || 3000, function(){
-    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+ app.listen(port, () => {
+    console.log(`\n=== App listening on port ${port} ===\n`)
 })
