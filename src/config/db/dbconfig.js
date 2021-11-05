@@ -1,12 +1,9 @@
-require('dotenv').config()
-// Các thông tin kết nối CSDL
-const config = {
-    // server: process.env.HOST, // You can use 'localhost\\instance' to connect to named instance
-    // user: process.env.USER,
-    // password: process.env.PASS,
-    // database: process.env.DATABASE,
-    // trustServerCertificate: true,
+const dotenv = require('dotenv');
 
+dotenv.config();
+
+//Các thông tin kết nối CSDL
+const config = {
     user: process.env.DB_USER,
     password: process.env.DB_PWD,
     database: process.env.DB_NAME,
@@ -23,3 +20,4 @@ const config = {
 }
 
 module.exports = config
+
